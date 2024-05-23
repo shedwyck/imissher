@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabbed Interface</title>
+    <title>Tabbed Scrolling Interface</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
         .tab {
             overflow: hidden;
@@ -28,64 +29,58 @@
         .tab button.active {
             background-color: #ccc;
         }
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
+        .section {
+            padding: 20px;
+            height: 600px; /* Adjust the height as needed */
         }
+        #Home {background-color: #f9f9f9;}
+        #News {background-color: #e9e9e9;}
+        #Contact {background-color: #d9d9d9;}
+        #About {background-color: #c9c9c9;}
     </style>
 </head>
 <body>
 
-<h2>Tabbed Interface Example</h2>
-<p>Click on the tabs to switch between different sections.</p>
+<h2>Tabbed Scrolling Interface Example</h2>
+<p>Click on the tabs to scroll to different sections on the page.</p>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
-    <button class="tablinks" onclick="openTab(event, 'News')">News</button>
-    <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
-    <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+    <button class="tablinks" onclick="scrollToSection(event, 'Home')">Home</button>
+    <button class="tablinks" onclick="scrollToSection(event, 'News')">News</button>
+    <button class="tablinks" onclick="scrollToSection(event, 'Contact')">Contact</button>
+    <button class="tablinks" onclick="scrollToSection(event, 'About')">About</button>
 </div>
 
-<div id="Home" class="tabcontent">
+<div id="Home" class="section">
     <h3>Home</h3>
     <p>Welcome to the home page!</p>
 </div>
 
-<div id="News" class="tabcontent">
+<div id="News" class="section">
     <h3>News</h3>
     <p>Stay updated with the latest news.</p>
 </div>
 
-<div id="Contact" class="tabcontent">
+<div id="Contact" class="section">
     <h3>Contact</h3>
     <p>Contact us for more information.</p>
 </div>
 
-<div id="About" class="tabcontent">
+<div id="About" class="section">
     <h3>About</h3>
     <p>Learn more about us.</p>
 </div>
 
 <script>
-    function openTab(evt, tabName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
+    function scrollToSection(evt, sectionId) {
+        // Scroll to the target section
+        document.getElementById(sectionId).scrollIntoView({behavior: "smooth"});
 
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
+        // Update the active class on the buttons
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
 </script>
