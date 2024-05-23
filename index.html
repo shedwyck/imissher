@@ -3,15 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website</title>
+    <title>Tabbed Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tab {
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: background-color 0.3s;
+            font-size: 17px;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>nono</h1>
-    </header>
-    <main>
-        <p>This is a paragraph of text on my simple website. I hope you find it NOT VERY interesting!</p>
-        <p>Visit <a href="https://www.example.com" target="_blank">Example.com</a> for more information.</p>
-    </main>
+
+<h2>Tabbed Interface Example</h2>
+<p>Click on the tabs to switch between different sections.</p>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'News')">News</button>
+    <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+    <button class="tablinks" onclick="openTab(event, 'About')">About</button>
+</div>
+
+<div id="Home" class="tabcontent">
+    <h3>Home</h3>
+    <p>Welcome to the home page!</p>
+</div>
+
+<div id="News" class="tabcontent">
+    <h3>News</h3>
+    <p>Stay updated with the latest news.</p>
+</div>
+
+<div id="Contact" class="tabcontent">
+    <h3>Contact</h3>
+    <p>Contact us for more information.</p>
+</div>
+
+<div id="About" class="tabcontent">
+    <h3>About</h3>
+    <p>Learn more about us.</p>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
 </body>
 </html>
