@@ -9,7 +9,11 @@
             font-family: Arial, sans-serif;
             scroll-behavior: smooth;
         }
+        .tab-container {
+            text-align: center; /* Center the tab buttons */
+        }
         .tab {
+            display: inline-block; /* Display the tab buttons in a line */
             overflow: hidden;
             border-bottom: 1px solid #ccc;
             background-color: #f1f1f1;
@@ -40,9 +44,6 @@
     </style>
 </head>
 <body>
-
-<h2>Tabbed Scrolling Interface Example</h2>
-<p>Click on the tabs to scroll to different sections on the page.</p>
 
 <div class="tab">
     <button class="tablinks" onclick="scrollToSection(event, 'Home')">Home</button>
