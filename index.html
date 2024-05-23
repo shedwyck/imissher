@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabbed Scrolling Interface</title>
+    <title>Fixed Tabs Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             scroll-behavior: smooth;
+            margin: 0; /* Remove default margin */
         }
         .tab-container {
+            position: fixed; /* Fix the tabs at the top */
+            width: 100%; /* Make the container full width */
+            background-color: #f1f1f1; /* Background color of the tab */
+            top: 0; /* Align the tabs to the top of the page */
+            z-index: 1000; /* Ensure the tabs are above other content */
             text-align: center; /* Center the tab buttons */
+            border-bottom: 1px solid #ccc; /* Border at the bottom of the tabs */
         }
         .tab {
             display: inline-block; /* Display the tab buttons in a line */
-            overflow: hidden;
-            border-bottom: 1px solid #ccc;
-            background-color: #f1f1f1;
         }
         .tab button {
             background-color: inherit;
@@ -36,6 +40,7 @@
         .section {
             padding: 20px;
             height: 600px; /* Adjust the height as needed */
+            margin-top: 60px; /* Ensure content is not hidden behind the fixed tabs */
         }
         #Home {background-color: #f9f9f9;}
         #News {background-color: #e9e9e9;}
@@ -44,6 +49,9 @@
     </style>
 </head>
 <body>
+
+<h2>Fixed Tabs Example</h2>
+<p>Click on the tabs to scroll to different sections on the page.</p>
 
 <div class="tab-container">
     <div class="tab">
